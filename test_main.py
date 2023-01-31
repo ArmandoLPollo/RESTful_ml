@@ -15,7 +15,6 @@ class FlaskTestCase(unittest.TestCase):
         expected_result = {"class": 0}
 
         assert result == expected_result, f"Expected {expected_result} but got {result}"
-        print("Test passed!")
-
+        
 if __name__ == '__main__':
     unittest.main()
