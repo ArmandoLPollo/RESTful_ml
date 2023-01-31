@@ -3,11 +3,12 @@ import requests
 from app import app
 
 class FlaskTestCase(unittest.TestCase):
+    
 
     def create_app(self):
-            return app
-        
-   def test_classify(self):
+        return app
+    
+    def test_classify(self):
         # Define the API endpoint URL
         url = "http://localhost:5000/classify"
         print('1')
