@@ -15,7 +15,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat 'docker build -t restful-flask-app .'
-                bat 'docker run -d restful-flask-app'
+                bat 'docker run restful-flask-app'
             }
         }
     }
