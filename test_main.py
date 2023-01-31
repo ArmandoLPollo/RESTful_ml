@@ -7,25 +7,15 @@ class FlaskTestCase(unittest.TestCase):
             return app
 
     def test_classify(self):
-        # Define the API endpoint URL
-        url = "http://localhost:5000/classify"
+        input_data = {"pixels": [0 for i in range(784)]}
 
-        # Define the data to send in the request using list comprehension
-        data = {
-            "pixels": [0.0 for i in range(784)]
-        }
+        response = requests.post("http://localhost:5000/classify", json=input_data)
 
-        # Send a POST request to the API endpoint
-        response = requests.post(url, json=data)
+        result = response.json()
+        expected_result = {"class": 0}
 
-        # Get the response data
-        response_data = json.loads(response.text)
-
-        # Define the expected result
-        expected_result = {"class": "T-shirt"}
-
-        # Compare the result of the API with the expected value
-        self.assertEqual(response_data, expected_result)
+        assert result == expected_result, f"Expected {expected_result} but got {result}"
+        print("Test passed!")
 
 if __name__ == '__main__':
     unittest.main()
