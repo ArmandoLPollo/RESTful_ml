@@ -8,6 +8,7 @@ pipeline {
             steps {
                 echo "Test en cours..."
                 bat 'python -m pip install Flask'
+                bat 'python -m pip install requests'
                 bat 'python test_main.py'
             }
         }
