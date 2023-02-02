@@ -23,7 +23,7 @@ class FlaskTestCase(unittest.TestCase):
         # Define the expected result
         expected_result = {"class": "0"}
         # Compare the result of the API with the expected value
-        assert result == expected_result, f"Expected {expected_result} but got the following repsonse {response_data}"
+        assert response_data == expected_result, f"Expected {expected_result} but got the following repsonse {response_data}"
         
 if __name__ == '__main__':
     unittest.main()
