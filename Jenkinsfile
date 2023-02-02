@@ -7,15 +7,18 @@ pipeline {
         stage('Testing') {
             steps {
                 echo "Test en cours..."
+                bat 'python -m pip install --upgrade pip'
                 bat 'python -m pip install Flask'
                 bat 'python -m pip install requests'
-                //bat 'python test_main.py'
+                bat 'python -m pip install numpy'
+                bat 'python -m pip install tensorflow'
+                bat 'python test_main.py'
             }
         }
         stage('Deploy') {
             steps {
                 bat 'docker build -t restful-flask-app .'
-                bat 'docker run restful-flask-app'
+                bat 'docker run -d restful-flask-app'
             }
         }
     }
