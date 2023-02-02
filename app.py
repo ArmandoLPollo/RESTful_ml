@@ -9,7 +9,7 @@ simple python flask application
 
 import os
 from flask import Flask, request
-import tensorfow as tf
+import tensorflow as tf
 import numpy as np
 
 ##########################################################################
