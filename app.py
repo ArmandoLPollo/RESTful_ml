@@ -44,11 +44,11 @@ def classify():
     prediction = int(np.round(model.predict(pixels)[0][0]))
     
     # Return the predicted class as a response
-    return {"class": classes[class_index]}
+    return {"class": str(prediction)}
 
 ##########################################################################
 ## Main
 ##########################################################################
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
