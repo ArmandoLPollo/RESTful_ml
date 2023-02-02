@@ -9,10 +9,7 @@ simple python flask application
 
 import os
 from flask import Flask, request
-from flask import render_template
-from flask import url_for
-from flask.json import jsonify
-import pickle
+import tensorfow as tf
 import numpy as np
 
 ##########################################################################
@@ -25,8 +22,7 @@ app = Flask(__name__)
 ## Loa model & define classes
 ##########################################################################
 
-model = pickle.load(open("trained_model.pkl", "rb"))
-classes = ['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+model = tf.keras.models.load_model("best_model.h5")
 
 ##########################################################################
 ## Routes
@@ -45,10 +41,7 @@ def classify():
     pixels = pixels.reshape(1, -1)
     
     # Use the model to make a prediction
-    prediction = model.predict(pixels)[0]
-    
-    # Get the index of the class with the highest prediction
-    class_index = np.argmax(prediction)
+    prediction = int(np.round(model.predict(pixels)[0][0]))
     
     # Return the predicted class as a response
     return {"class": classes[class_index]}
