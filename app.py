@@ -22,7 +22,8 @@ app = Flask(__name__)
 ## Loa model & define classes
 ##########################################################################
 
-model = tf.keras.models.load_model("best_model.h5")
+#model = tf.keras.models.load_model("best_model.h5")
+model = tf.keras.models.load_model("model.h5")
 
 ##########################################################################
 ## Routes
